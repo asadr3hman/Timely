@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My form</title>
+    <link rel="stylesheet" href="form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<script>
+    function getDept(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("department").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "getDeptphp.php", true);
+            xmlhttp.send();
+    }
+    function getCourses(str) {
+            console.log(str)
+            if (str == "") {
+                document.getElementById("courses").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("courses").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "getCoursesphp.php?q=" + str, true);
+            xmlhttp.send();
+        }
+</script>
+
+<body>
+    <div class="testback"
+        style="width: 100%; height: 100px; background-color: rgba(0, 0, 0, 0.4); position: fixed; top: 0px; display: none;">
+    </div>
+    <div class="mainDiv">
+
+        <div class="navbar">
+            <div class="row">
+                <div class="log">
+                    <img onclick="location.href='index.html'" src="icons/Timely logo/timely full logo .png" style="cursor: pointer;" width="130px" alt="logo">
+                </div>
+                <div class="menuOption">
+                    <ul>
+                        <li id="features" class="items">Features</li>
+                        <li id="howItWorks" class="items">How it Works</li>
+                        <li id="price" class="items">Price</li>
+                        <li id="fAQ" class="items">FAQ</li>
+                        <li id="contact" class="items">Contact</li>
+                        <li id="login" onclick="location.href='loginPage.html'" class="items">Login</li>
+                    </ul>
+                </div>
+                <div class="menuBTN">
+                    <h4 class="menu">MENU</h4>
+                    <div class="menuBars">
+                        <div class="hbarger"></div>
+                        <div class="hbarger"></div>
+                        <div class="hbarger"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Form">
+            <form onclick="btnSubmitClicked()" name="myform" method="post" action="formphp.php">
+                <h1 id="st">Student Registeration</h1>
+                <h4>Personel information</h4>
+
+                <input class="matchParent requiredField" type="text" placeholder="Name" title="3 or 12 characters"
+                    name="name"><br><br>
+                <input id="rollNo" class="matchParent requiredField" type="text" placeholder="Roll no"
+                    title="BSSE51F20S069" name="rollNo"><br><br>
+                <input class="matchParent requiredField" type="email" placeholder="Email" name="email" autocomplete="off"><br><br>
+                <input id="txt_password" class="matchParent requiredField" type="password" name="password" autocomplete="off"
+                    placeholder="Password"
+                    title="too week, enter one upper case character and one lowerver case and password lenght should be 6 or more characters ">
+                <div id="show">
+                    <input type="checkbox" onclick="show_pass()" id="show_pas">Show Password
+                </div>
+                <br>
+
+                <div class="couDiv">
+                    <label for="department">Department:</label>
+                    <select id="department" name="department" onchange="getCourses(this.value)" required>
+                        <option disabled selected> --Select Department--</option>
+                    </select>
+                </div>
+
+                <div class="couDiv">
+                    <label for="courses">Courses :</label>
+                    <select id="courses" name="course" required>
+                        <option value="" disabled selected > --Select Course--</option>
+                    </select>
+                </div>
+                <div class="couDiv">
+                    <label for="semester">Semester :</label>
+                    <select id="semester" name="semester" required>
+                        <option value="" disabled selected> --Select Semester--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+
+                <div class="SorR">
+                    <input type="radio" name="s_r" value="Regular" checked>Regular
+                    <input type="radio" name="s_r" value="Self">Self
+                </div>
+
+                <div class="click_btn"><button class="" id="btn_submit" onclick="btnSubmitClicked">Submit</button></div> </form>
+                <div class="alreadyUser" onclick="location.href='loginPage.html'"> <button>Already a user? Login</button></div>
+        </div>
+
+        <!-- <button class="matchParent" id="btn_submit" onclick="btnSubmitClicked">Submit</button> -->
+        <p id="error_area"></p>
+
+
+
+        </form>
+
+    </div>
+    </div>
+</body>
+<script src="fromjS.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        getDept();
+        $('.menuBTN').children().click(function () {
+            $('.menuOption').css('visibility', 'visible').slideToggle();
+            $('.testback').slideToggle();
+        }
+        )
+
+    })
+</script>
+
+</html>

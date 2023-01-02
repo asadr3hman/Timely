@@ -1,0 +1,358 @@
+:root{
+    --primary: #D4CFB0;
+    --secondry: #8AC5A8;
+    --btnCol: #52414C ;
+}
+
+*{
+    box-sizing: border-box;
+    padding: auto;
+    margin: auto;
+}
+body{
+    background-color: #ebe7ce44;
+}
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    height: 800px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+}
+.back_video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+@media (min-aspect-ratio: 16/9){
+    .back_video{
+    width: 100%;
+    height: auto;
+    }
+}
+    @media (max-aspect-ratio: 16/9){
+    .back_video{
+    width: auto;
+    height: 100;
+    }}
+
+    @media screen and (max-width: 900px) {
+        body {
+          
+        }
+        .row .menuOption ul{
+            flex-direction: column;
+        }
+        .slider_con , .pan, .feacher_item, .btnclass{
+            flex-wrap: wrap;
+        }
+      }
+.navbar{
+    color: white;
+    display: flex;
+    width: 100%;
+    padding: 30px;
+    margin-top: 0px;
+    z-index: 2;
+}
+.row{
+    display: flex;
+    width: 60%;
+    justify-content: center;
+}
+.log{
+    display: flex;
+    justify-self: flex-start;
+}
+.menuOption ul{
+    text-decoration: none;
+    display: flex;
+    padding: 0px;
+}
+.menuOption li{
+    list-style: none;
+    padding: 0px 20px;
+}
+.menuOption li:hover{
+    color: var(--primary);
+}
+.menuOption{
+    display: none;
+}
+.menuBars{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.hbarger{
+    margin: 3px 0px;
+    background-color: white;
+    width: 20px;
+    height: 1px;
+}
+.menuBTN{
+    display: flex;
+    justify-self: flex-end;
+}
+.menuBTN h4{
+    margin: 0px 20px;
+    cursor: pointer;
+}
+.items{
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.slider_con{
+    display: flex;
+    align-content: space-between;
+    margin-top: -640px;
+    z-index: 1;
+    color: white;
+}
+.slider_text_area{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width: 50%;
+}
+.slider_text_area h2{
+    margin: 10px 0px;
+}
+.slider_text_area p{
+    margin: 10px 0px;
+}
+.btnclass{
+    display: flex;
+}
+.reviewMobile{
+}
+.btn button{
+    background-color: var(--primary);
+    text-align: center;
+    width: 150px;
+    padding: 14px 30px;
+    border-radius: 50px;
+    border: var(--primary) 2px solid;
+    margin: 20px 14px;
+    cursor: pointer;
+}
+.btn button:hover{
+    background-color: rgba(0, 0, 0, 0);
+    border: var(--primary) 2px solid;
+    color: var(--primary);
+    transition: all .5s;
+}
+.btn_outline button a{
+    text-decoration: none;
+    color: white;
+}
+.btn_outline button:hover a{
+    color: black;
+}
+
+.btn_outline button{
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    width: 150px;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    border: 2px solid white;
+    margin: 20px 14px;
+    cursor: pointer;
+}
+.btn_outline button:hover{
+    background-color: var(--primary);
+    border: var(--primary) 2px solid;
+    color: black;
+    transition: all .5s;
+}
+#feacher_con{
+    padding-top: 50px;
+    width: auto;
+    text-align: center;
+}
+.hhh{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hhh::after{
+    content:' ';
+    display:block;
+    border:1px solid var(--primary);
+    border-radius: 4px;
+    width: 20%;
+    margin: 15px 0px;
+}
+.feacher_item{
+    
+    display: flex;
+    text-align: center;
+}
+.item{
+    padding: 20px;
+    cursor: pointer;
+}
+.item h5{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+
+
+
+
+#icon_cal:hover img{
+    content: url("icons/calendar\ \(1\).png");
+}
+#icon_meg:hover img{
+    content: url("icons/newspaper.png");
+}
+#icon_con:hover img{
+    content: url("icons/assignment\ \(3\).png");
+}
+
+#icon_per:hover img{
+    content: url("icons/digital-clock.png");
+}
+
+
+
+
+
+.calSelected{
+    content: url("icons/calendar\ \(1\).png");
+}
+.newsSelected{
+    content: url("icons/newspaper.png");
+}
+.assiSelected{
+    content: url("icons/assignment\ \(3\).png");
+}
+.digiSelected{
+    content: url("icons/digital-clock.png");
+}
+
+
+
+
+.pan{
+    background-color: var(--primary);
+    width: 100%;
+    height: 600px;
+    display: flex;
+    
+}
+.pan_rightpart{
+    width: 50%;
+    display: flex;
+}
+.pan_rightpart img{
+    position: relative;
+}
+.pan_leftpart{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.co{
+    width: 80%;
+}
+.co > *{
+    padding: 15px 0px;
+}
+
+.click_btn button{
+    background-color: var(--btnCol);
+    text-align: center;
+    width: 190px;
+    padding: 14px 30px;
+    color: white;
+    border-radius: 50px;
+    border: var(--btnCol) 2px solid;
+    margin: 20px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.click_btn button:hover{
+    box-shadow: 2px 2px 7px var(--btnCol);
+    transform: scale(1.02);
+    transition: all .3s;
+}
+
+.footer{
+    
+}
+
+.howitwork_con{
+    padding: 50px 0px;
+    width: 50%;
+    text-align: center;
+}
+.howitwork_con p{
+    width: 70%;
+}
+
+
+
+
+.mobileview{
+    width: 90%;
+    padding: 50px 0px;
+    display: flex;
+}
+.mobileview > *{
+    width: 33%;
+}
+.mobileS{
+    display: flex;
+    flex-direction: column;
+    background-image: url("icons/home-mobile.png");
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+
+
+.point_con{
+    display: flex;
+    align-items: center ;
+}
+.point_con .point_img{
+    margin: 0px 10px;
+}
+.point_con .point_text{
+    margin: 0px 10px;
+}
+.point_text{
+    border-bottom: #00000018 1px solid;
+    padding: 35px 10px;
+}
+.point_text h3,.point_text p {
+    padding: 8px 0px;
+}
+
+
+.featuresC1 .point_con{
+    flex-direction: row-reverse;
+    text-align: right;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="testback"
+        style="width: 100%; height: 100px; background-color: rgba(0, 0, 0, 0.4); position: fixed; top: 0px; display: none;">
+    </div>
+    </div>
+    <div class="mainDiv">
+
+        <div class="navbar">
+            <div class="row">
+                <div class="log">
+                    <img onclick="location.href='index.html'" src="icons/Timely logo/timely full logo .png"
+                        style="cursor: pointer;" width="130px" alt="logo">
+                </div>
+                <div class="menuOption">
+                    <ul>
+                        <li id="features" class="items">Features</li>
+                        <li id="howItWorks" class="items" onclick="location.href='howitworks.html'">How it Works</li>
+                        <li id="price" class="items">Price</li>
+                        <li id="fAQ" class="items">FAQ</li>
+                        <li id="contact" class="items" onclick="location.href='contact.html'">Contact</li>
+                        <li id="login" class="items">Login</li>
+                    </ul>
+                </div>
+                <div class="menuBTN">
+                    <h4 class="menu">MENU</h4>
+                    <div class="menuBars">
+                        <div class="hbarger"></div>
+                        <div class="hbarger"></div>
+                        <div class="hbarger"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Form">
+            <form onclick="btnSubmitClicked()" name="myform" method="post" action="authenticateUser.php">
+                <h1 id="st">Login</h1>
+                <h4>Personel information</h4>
+
+                <input class="matchParent requiredField" type="email" placeholder="Email" name="email" required><br><br>
+                <input id="txt_password" class="matchParent requiredField" type="password" name="password" required
+                    placeholder="Password"
+                    title="too week, enter one upper case character and one lowerver case and password lenght should be 6 or more characters ">
+                <div id="show">
+                    <input type="checkbox" onclick="show_pass()" id="show_pas">Show Password
+                </div>
+                <br>
+
+                <div class="click_btn"><button class="" id="btn_submit" onclick="btnSubmitClicked">Login</button></div>
+            </form>
+            <div class="alreadyUser" onclick="location.href='form.html'"> <button>Not a user? Signup</button></div>
+        </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.menuBTN').children().click(function () {
+            $('.menuOption').css('visibility', 'visible').slideToggle();
+            $('.testback').slideToggle();
+        }
+        )
+    })
+    function show_pass() {
+        if (txt_password.type === 'password') {
+            txt_password.type = 'text'
+        }
+        else {
+            txt_password.type = 'password'
+        }
+    }
+</script>
+
+</html>

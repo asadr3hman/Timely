@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@700&display=swap');
+    </style>
+    <link rel="stylesheet" href="home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Timely</title>
+
+    <script>
+        function getTTDay(str) {
+            console.log(str)
+            if (str == "") {
+                document.getElementById("todayItems").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("todayItems").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "homephp.php?q=" + str, true);
+            xmlhttp.send();
+        }
+        function logout() {
+            let text = "You really want to LOGOUT ?";
+            if (confirm(text) == true) {
+                location.href='index.html'
+            } else {
+                
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="hbur">
+        <div class="burger"></div>
+        <div class="burger"></div>
+        <div class="burger"></div>
+    </div>
+    <div id="side_nav_panel">
+        <div class="log">
+            <img src="icons/Timely logo/timely full logo .png" style="cursor: pointer; " width="130px" alt="logo">
+        </div>
+        <nav id="nav">
+            <ul>
+                <li class="sub"><a href="#" >Home</a>
+                    <ul id="point" class="sub_con">
+                        <li class="sub"><a class="selected" href="#">BSSE</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Assignments</a></li>
+            </ul>
+        </nav>
+        <div class="logout">
+            <div class="logoutbtn" onclick="logout()"><button>LOGOUT</button></div>
+        </div>
+    </div>
+    <div id="content_panel">
+        <div class="todayView">
+            <div class="todayHead">
+                <h1>Today</h1>
+                <div class="jumpDay">
+                    <select name="jumpDay" id="jumpDropdown" onchange="getTTDay(this.value);">
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
+                </div>
+            </div>
+            <div id="todayItems" class="todayItems">
+                <div class="todayItem">
+                    <img src="icons/add.png" alt="" width="40px">
+                    <h2>HRM</h2>
+                    <h4>Ms.Iqsa</h4>
+                    <h5>CL-10</h5>
+                    <h5>09:30</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        getStudentData();
+        function getStudentData() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("point").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "getStudentData.php", true);
+            xmlhttp.send();
+        }
+
+        $('a').click(function () {
+            $('a').removeClass('selected')
+            $(this).addClass('selected');
+        })
+
+        const d = new Date();
+        let day = d.getDay();
+        let dayName;
+        const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        for (let index = 0; index < week.length; index++) {
+            const element = week[index];
+            if (day == index)
+                dayName = week[index];
+        }
+        getTTDay(dayName);
+
+        $("select option[value='" + dayName + "']").attr("selected", "selected"); // select the current day in dropdown
+
+
+
+
+    })
+</script>
+
+</html>

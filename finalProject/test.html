@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <select name="department" id="department">
+        
+    </select>
+</body>
+<script>
+    var arr= ["CS & IT","Urdu"];
+    var select = document.getElementById("department")
+    // for (let index = 0; index < arr.length; index++) {
+    //     const element = arr[index];
+    //     var opt = document.createElement('option')
+    //     opt.innerHTML=element
+    //     opt.value=element
+        
+    //     select.append(opt)
+    // }
+    arr.forEach(element => {
+        var opt= document.createElement("option")
+        opt.innerHTML=element
+        opt.value=element
+
+        $("#department").append(opt)
+    });
+</script>
+</html>

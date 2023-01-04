@@ -16,12 +16,6 @@ echo " connected successfully with db<br>";
 }
 
 //write data in database
-$name="";
-$rollNo="";
-$email="";
-$user_password="";
-$user_city="";
-$user_gender="";
 	$name = $_REQUEST['name'];
     $rollNo = $_REQUEST['rollNo'];
     $email = $_REQUEST['email'];

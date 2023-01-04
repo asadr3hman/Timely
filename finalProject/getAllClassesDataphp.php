@@ -36,31 +36,32 @@ include 'connect.php';
 
 <body>
     <?php
+    $arryOfCourses = array();
     session_start();
-    $class = $_SESSION['classN']; //bsse or bsit etc
-    $rollN = $_SESSION['rollNo'];
-    $className = strtoupper($class);
+    $arryOfCourses = $_SESSION['arryOfCourses']; //bsse or etc
+    $size = sizeof($arryOfCourses);
     $q = $_GET['q'];//Day
 
-    if (!$conn) {
-        die('Could not connect: ' . mysqli_error($conn));
-    }
-
     mysqli_select_db($conn, "ajax_demo");
-    $sql = "SELECT classN, teacherN, roomN, time FROM $className WHERE weekDay = '" . $q . "'";
-    
-    $result = mysqli_query($conn,$sql);
-    
-    while ($row = mysqli_fetch_array($result)) {
-        echo '<div class="todayItem"> <img src="icons/add.png" alt="" width="40px">';
-        echo "<h2>" . $row['classN'] . "</h2>";
-        echo "<h4>" . $row['teacherN'] . "</h4>";
-        echo "<h5>" . $row['roomN'] . "</h5>";
-        echo "<h5>" . $row['time'] . "</h5>";
-        echo "<h5>" . $rollN . "</h5>";
 
-        echo "</div>";
+
+    foreach ($arryOfCourses as $courses){
+        $sql = "SELECT classN, teacherN, roomN, time FROM $courses WHERE weekDay = '" . $q . "'";
+        
+        $result = mysqli_query($conn,$sql);
+        
+        while ($row = mysqli_fetch_array($result)) {
+            echo '<div class="todayItem"> <img src="icons/add.png" alt="" width="40px">'; 
+            echo "<h1>" . $courses . "</h1>";
+            echo "<h2>" . $row['classN'] . "</h2>";
+            echo "<h4>" . $row['teacherN'] . "</h4>";
+            echo "<h5>" . $row['roomN'] . "</h5>";
+            echo "<h5>" . $row['time'] . "</h5>";
+            echo "</div>";
+        }
     }
+    
+    
     ?>
 </body>
 

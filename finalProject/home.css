@@ -128,7 +128,8 @@ body{
 .logout{
     display: flex;
     justify-content: center;
-    flex-grow: 1;
+    align-items: center;
+    flex-grow: 0.5;
 }
 .logoutbtn{
     width: 90%;
@@ -140,6 +141,11 @@ body{
     padding: 10px 30px;
     border-radius: 15px;
 }
+.logoutbtn button:hover{
+    transform: scale(1.02);
+    transition: all 0.2s;
+}
+
 
 
 

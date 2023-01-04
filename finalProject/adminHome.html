@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@700&display=swap');
-    </style>
     <link rel="stylesheet" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <title>Timely</title>
-
+    <title>Admin Home</title>
     <script>
-        function getTTDay(str) {
-            console.log(str)
+        function getAllClassesData(str) {
             if (str == "") {
                 document.getElementById("todayItems").innerHTML = "";
                 return;
@@ -25,7 +19,7 @@
                     document.getElementById("todayItems").innerHTML = this.responseText;
                 }
             }
-            xmlhttp.open("GET", "homephp.php?q=" + str, true);
+            xmlhttp.open("GET", "getAllClassesDataphp.php?q=" + str, true);
             xmlhttp.send();
         }
         function logout() {
@@ -36,32 +30,16 @@
                 
             }
         }
-
-        function editStu() {
-            let text = "You really want to edit your details ?";
-            if (confirm(text) == true) {
-                location.href='updateStuphp.php'
-            } else {
-                
-            }
-        }
-
     </script>
 </head>
-
 <body>
-    <div class="hbur">
-        <div class="burger"></div>
-        <div class="burger"></div>
-        <div class="burger"></div>
-    </div>
     <div id="side_nav_panel">
         <div class="log">
             <img src="icons/Timely logo/timely full logo .png" style="cursor: pointer; " width="130px" alt="logo">
         </div>
         <nav id="nav">
             <ul>
-                <li class="sub"><a href="#" >Home</a>
+                <li class="sub"><a href="#" class="selected">Home</a>
                     <ul id="point" class="sub_con">
                         <li class="sub"><a class="selected" href="#">BSSE</a></li>
                     </ul>
@@ -71,9 +49,6 @@
             </ul>
         </nav>
         <div class="logout">
-            <div class="logoutbtn" onclick="editStu()"><button>Edit</button></div>
-        </div>
-        <div class="logout">
             <div class="logoutbtn" onclick="logout()"><button>LOGOUT</button></div>
         </div>
     </div>
@@ -82,7 +57,7 @@
             <div class="todayHead">
                 <h1>Today</h1>
                 <div class="jumpDay">
-                    <select name="jumpDay" id="jumpDropdown" onchange="getTTDay(this.value);">
+                    <select name="jumpDay" id="jumpDropdown" onchange="getAllClassesData(this.value);">
                         <option value="Saturday">Saturday</option>
                         <option value="Sunday">Sunday</option>
                         <option value="Monday">Monday</option>
@@ -95,35 +70,42 @@
             </div>
             <div id="todayItems" class="todayItems">
                 <div class="todayItem">
-                    <img src="icons/add.png" alt="" width="40px">
+                    <img style="content: url('https://cdn-icons-png.flaticon.com/512/4207/4207231.png');" alt="" width="40px">
                     <h2>HRM</h2>
                     <h4>Ms.Iqsa</h4>
                     <h5>CL-10</h5>
                     <h5>09:30</h5>
                 </div>
             </div>
+
+            <div class="logoutbtn" onclick="addclass()">
+                <button>Add class</button>
+            </div>
         </div>
     </div>
 </body>
 <script>
     $(document).ready(function () {
-        getStudentData();
-        function getStudentData() {
+        getAllCou();//get all courses name
+        function getAllCou() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("point").innerHTML = this.responseText;
                 }
             }
-            xmlhttp.open("GET", "getStudentData.php", true);
+            xmlhttp.open("GET", "getAllCouphp.php", true);
             xmlhttp.send();
         }
 
+        //underline the selected item in sidepanel
         $('a').click(function () {
-            $('a').removeClass('selected')
+            $('a').removeClass('selected');
             $(this).addClass('selected');
         })
 
+
+        //select the current day and show the information according
         const d = new Date();
         let day = d.getDay();
         let dayName;
@@ -133,14 +115,10 @@
             if (day == index)
                 dayName = week[index];
         }
-        getTTDay(dayName);
+        getAllClassesData(dayName);//fun for getting the result for current day
 
         $("select option[value='" + dayName + "']").attr("selected", "selected"); // select the current day in dropdown
 
-
-
-
     })
 </script>
-
 </html>

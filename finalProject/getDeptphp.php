@@ -20,7 +20,7 @@ include "connect.php";
 
     $result = mysqli_query($conn,$sql);
     echo "<option disabled selected> --Select Department--</option>";
-    while ($row = mysqli_fetch_array($result)) {    
+    while ($row = mysqli_fetch_array($result)) {
         
         echo "<option value = '";
         echo $row['departmentN'] ."' >". $row['departmentN'] . "</option>";

@@ -11,14 +11,14 @@ include 'connect.php';
             display: flex;
             padding: 3% 5%;
             justify-content: center;
-            width: 80%;
+            width: 100%;
             flex-wrap: wrap;
         }
 
         .todayItem {
             margin: 1%;
-            width: 25%;
-            padding: 5% 2%;
+            width: 200px;
+            padding: 20px;
             border-radius: 5%;
             display: flex;
             flex-direction: column;
@@ -57,8 +57,6 @@ include 'connect.php';
         echo "<h4>" . $row['teacherN'] . "</h4>";
         echo "<h5>" . $row['roomN'] . "</h5>";
         echo "<h5>" . $row['time'] . "</h5>";
-        echo "<h5>" . $rollN . "</h5>";
-
         echo "</div>";
     }
     ?>

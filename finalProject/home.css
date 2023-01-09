@@ -1,147 +1,169 @@
-:root{
+:root {
     --primary: #D4CFB0;
     --secondry: #8AC5A8;
     --btnCol: #52414c;
 }
-*{
+
+* {
     box-sizing: border-box;
     margin: 0%;
     padding: 0%;
 }
-#side_nav_panel{
+
+#side_nav_panel {
     background-color: #52414c;
     width: 25%;
     height: 100vh;
+    position: fixed;
     display: flex;
     flex-direction: column;
     border-right: 2px solid gold;
     border-right-style: dashed;
 }
-.log{
+
+.log {
     align-self: center;
     margin: 20px;
     flex-grow: 1;
 }
-body{
-    display: flex;
-}
-#content_panel{
+
+#content_panel {
     width: 75%;
     background-color: #f9f8f1;
     display: flex;
     flex-direction: column;
 }
-#logo{
+
+#logo {
     font-size: 40px;
     margin-bottom: 100px;
     font-family: 'Inknut Antiqua', serif;
 
 }
-#logo a{
+
+#logo a {
     text-decoration: none;
     color: #000000;
 }
 
-#nav, #nav ul{
+#nav,
+#nav ul {
     list-style: none;
     font-family: 'Roboto', sans-serif;
 }
 
 
-#nav{
+#nav {
     padding: 15px;
     margin-top: 15%;
     margin-left: 10%;
     display: flex;
     flex-grow: 10;
 }
+
 #nav::before,
-#nav::after{
+#nav::after {
     content: '';
     display: table;
 }
-#nav::after{
+
+#nav::after {
     clear: both;
 }
-#nav li{
+
+#nav li {
     padding-top: 10px;
 }
-#nav a{
+
+#nav a {
     text-transform: uppercase;
     text-decoration: none;
     color: #ffffff;
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
 }
+
 #nav li:hover>a {
     color: #F2C522;
     border-bottom: #F2C522 2px solid;
 }
-.sub > .sub_con{
+
+.sub>.sub_con {
     display: block;
     transform: translateX(40px);
 }
 
-.burger{
+.burger {
     width: 20px;
     height: 3px;
     background-color: black;
     margin-bottom: 2px;
     visibility: hidden;
 }
-.hbur{
+
+.hbur {
     margin-top: 5%;
     margin-left: 5%;
     position: fixed;
     display: none;
 }
 
-    @media only screen and (max-width:767px) {
-        /* for mobiles */
-        .burger{
-            visibility: visible;
-        }
-        .hbur{
-            display: block;
-        }
-        #side_nav_panel{
-            display: none;
-        }
-        #content_panel{
-            width: 100%;
-        }
-        .todayHead > *{
-            margin: 0px 40px;
-        }
-        body{
-            height: 100vh;
-        }
+@media only screen and (max-width:767px) {
+
+    /* for mobiles */
+    .burger {
+        visibility: visible;
     }
 
-.selected{
+    .hbur {
+        display: block;
+    }
+
+    #side_nav_panel {
+        display: none;
+    }
+
+    #content_panel {
+        width: 100%;
+    }
+
+    .todayHead>* {
+        margin: 0px 40px;
+    }
+
+    body {
+        height: 100vh;
+    }
+}
+
+.selected {
     color: #F2C522;
     border-bottom: #F2C522 2px solid;
 }
 
 
 
-.logout{
+.logout {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 0.5;
 }
-.logoutbtn{
+
+.logoutbtn {
     width: 90%;
+    margin-bottom: 10px;
 }
-.logoutbtn button{
+
+.logoutbtn button {
     background-color: #F2C522;
     border: none;
     width: 100%;
     padding: 10px 30px;
     border-radius: 15px;
 }
-.logoutbtn button:hover{
+
+.logoutbtn button:hover {
     transform: scale(1.02);
     transition: all 0.2s;
 }
@@ -152,27 +174,34 @@ body{
 
 
 
-.todayView{
+.todayView {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    width: 75%;
+    right: 0;
 }
-.todayHead{
+
+.todayHead {
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding: 4% 5%;
 }
-.todayItems{
+
+.todayItems {
     display: flex;
     padding: 3% 5%;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     flex-wrap: wrap;
 }
-.todayItem{
+
+.todayItem {
     margin: 1%;
-    padding: 5% 2%;
+    width: 200px;
+    padding: 20px;
     border-radius: 5%;
     display: flex;
     flex-direction: column;
@@ -180,16 +209,18 @@ body{
     box-shadow: 2px 2px 10px rgb(194, 194, 194);
     background-color: var(--secondry);
 }
-.todayItem > *{
+
+.todayItem>* {
     padding: 3px;
 }
 
 
 
-.jumpDay{
+.jumpDay {
     width: 20%;
 }
-.jumpDay select{
+
+.jumpDay select {
     background-color: var(--primary);
     border: none;
     outline: none;
@@ -201,6 +232,3 @@ body{
     font-size: 16px;
     text-align: center;
 }
-
-
-

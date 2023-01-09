@@ -1,0 +1,34 @@
+.todayItem:hover{
+    background-color: #8ac5a994;
+}
+.todayItem:hover #del{
+    animation: cssAnimation 0s 0.5s forwards;
+    transition: all 0.4s;
+}
+#del img:hover{
+    scale: 1.02;
+    transition: all 0.1s;
+}
+#delBTN{
+    cursor: pointer;
+}
+@keyframes cssAnimation {
+    to   { 
+        visibility: visible; 
+        
+    }
+}
+
+.todayItem:hover #update{
+    animation: cssAnimation 0s 0.5s forwards;
+    background-color: #8ac5a994;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#update:hover {
+    scale: 1.05;
+    transition: all .5s ease-in-out;
+}
+@keyframes cssAnimation {
+    to   { visibility: visible; }
+}

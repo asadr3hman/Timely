@@ -1,4 +1,6 @@
+
 <?php
+//get all courses in sidepanel of admin
 include "connect.php";
 
 

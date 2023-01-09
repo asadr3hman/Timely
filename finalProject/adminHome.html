@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="admincss.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Admin Home</title>
     <script>
@@ -29,6 +30,35 @@
             } else {
                 
             }
+        }
+
+        function delbtn(weekN,classN, courseN, semester, self_reg){
+            // alert(weekN + " and " + classN + " and " + courseN);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("todayItems").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("POST", "adminDelSubjectphp.php?weekN=" + weekN + "&" + "courseN=" + courseN + "&" + "classN=" + classN + "&" + "semester=" + semester + "&" + "self_reg=" + self_reg , true);
+            xmlhttp.send();
+        }
+
+        function getCourses() {
+            var str = "CS and IT"
+            console.log(str)
+            if (str == "") {
+                document.getElementById("courses").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("courses").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "getCoursesphp.php?q=" + str, true);
+            xmlhttp.send();
         }
     </script>
 </head>
@@ -78,14 +108,58 @@
                 </div>
             </div>
 
-            <div class="logoutbtn" onclick="addclass()">
+            <div class="logoutbtn" onclick="addclass()" id="addclass"> 
                 <button>Add class</button>
+            </div>
+
+            <div class="addclass" style="display: none; justify-content: center;">
+                <form action="addclassphp.php" method="post">
+                    <label for="courses">Classes :</label>
+                    <select id="courses" name="course" required >
+                        <option value="" disabled selected > --Select class--</option>
+                    </select>
+                    <label for="semester">Semester :</label>
+                        <select id="semester" name="semester" required>
+                            <option value="" disabled selected> --Select Semester--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                            <input type="radio" name="s_r" value="Regular" checked>Regular
+                            <input type="radio" name="s_r" value="Self">Self
+                            <div class="subjectName" style="margin: 10px;display: flex; justify-content: center;">
+                                Subject :<input style="width: 70%; " type="text" placeholder="Subject name" name="subject"> 
+                            </div>
+                            <div class="subjectName" style="margin: 10px; display: flex; justify-content: center;">
+                                Teacher :<input style="width: 70%;" type="text" placeholder="Teacher name" name="teacher"> 
+                            </div>
+                            <div class="subjectName" style="margin: 10px;display: flex; justify-content: center;">
+                                Room :<input style="width: 70%;" type="text" placeholder="Room No" name="roomN"> 
+                            </div>
+                            <div class="subjectName" style="margin: 10px;display: flex; justify-content: center;">
+                                Time :<input style="width: 70%;" type="text" placeholder="Time" name="time"> 
+                            </div>
+
+                            <div class="logout">
+                                <div class="logoutbtn"><button name="add">Add</button></div>
+                            </div>
+                        </form>
+                        <div class="logout">
+                            <div class="logoutbtn" id="cancel" ><button>Cancel</button></div>
+                        </div>
+
             </div>
         </div>
     </div>
 </body>
 <script>
     $(document).ready(function () {
+        getCourses();
         getAllCou();//get all courses name
         function getAllCou() {
             var xmlhttp = new XMLHttpRequest();
@@ -118,6 +192,16 @@
         getAllClassesData(dayName);//fun for getting the result for current day
 
         $("select option[value='" + dayName + "']").attr("selected", "selected"); // select the current day in dropdown
+
+
+        $("#addclass").click(function(){
+            $("#addclass").hide();
+            $(".addclass").css("display","block");
+        })
+        $("#cancel").click(function(){
+            $("#addclass").show();
+            $(".addclass").css("display","none");
+        })
 
     })
 </script>

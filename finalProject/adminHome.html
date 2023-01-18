@@ -113,7 +113,7 @@
             </div>
 
             <div class="addclass" style="display: none; justify-content: center;">
-                <form action="addclassphp.php" method="post">
+                <form action="addclassphp.php" method="post" enctype="multipart/form-data">
                     <label for="courses">Classes :</label>
                     <select id="courses" name="course" required >
                         <option value="" disabled selected > --Select class--</option>
@@ -144,7 +144,9 @@
                             <div class="subjectName" style="margin: 10px;display: flex; justify-content: center;">
                                 Time :<input style="width: 70%;" type="text" placeholder="Time" name="time"> 
                             </div>
-
+                            <div class="subjectName" style="margin: 10px;display: flex; justify-content: center;">
+                                Upload Image : <input type="file" name="imagfile">
+                            </div>
                             <div class="logout">
                                 <div class="logoutbtn"><button name="add">Add</button></div>
                             </div>
@@ -152,7 +154,6 @@
                         <div class="logout">
                             <div class="logoutbtn" id="cancel" ><button>Cancel</button></div>
                         </div>
-
             </div>
         </div>
     </div>

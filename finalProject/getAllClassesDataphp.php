@@ -68,10 +68,16 @@ include 'connect.php';
         $result = mysqli_query($conn,$sql);
         
         while ($row = mysqli_fetch_array($result)) {
+            $getIMG = "SELECT subjectImgURL FROM subjects WHERE subjectN = '". $row['classN'] . "'";
+            $resultIMG = mysqli_query($conn, $getIMG);
+            $img = "https://cdn-icons-png.flaticon.com/512/4173/4173686.png";
+            while ($imagRow = mysqli_fetch_array($resultIMG)){
+                $img = $imagRow['subjectImgURL'];
+            }
             echo '<div class="todayItem"> ';
             echo '<div id="del"> <img onclick="delbtn('. $row["weekNo"] .',' ."'" . $row["classN"] . "'" . ',' ."'" . $courses . "'".',' ."'" . $row["semester"] . "'". ',' ."'" . $row["self_reg"] . "'" . ')"
             id = "delBTN" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="" width="20px"></div>';
-            echo '<img src="icons/add.png" alt="" width="40px">';
+            echo '<img src="' . $img . '" alt="" width="50px">';
             echo "<h1>" . $courses."</h1>";
             echo "<h2>" . $row['semester'] . " ";
             if($row['self_reg']==1) echo "Self". "</h2>";

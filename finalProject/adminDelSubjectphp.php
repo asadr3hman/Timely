@@ -4,7 +4,7 @@ include "connect.php";
 session_start();
 
 $daySelected = $_SESSION['daySelected'];
-$semester = $_SESSION['semester'];
+
 
 $weekN = $_GET['weekN'];
 $courseN = $_GET['courseN'];
